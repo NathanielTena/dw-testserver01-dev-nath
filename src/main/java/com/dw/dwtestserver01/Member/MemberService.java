@@ -25,6 +25,7 @@ public class MemberService {
 
     public MemberEntity createMember(MemberDto.Post memberPostDto) {
         MemberEntity savedMember = memberRepository.save(memberMapper.memberPostDtoToMember(memberPostDto));
+        /*verifyExistAccountName(savedMember.getUserId());*/
         return savedMember;
     }
 
@@ -33,10 +34,16 @@ public class MemberService {
     }
 
     @Transactional(readOnly = true)
-    public MemberEntity findByUserId(String userId) {
+    public MemberEntity findVerifiedMemberByUserId(String userId) {
         Optional<MemberEntity> optionalMember = memberRepository.findByUserId(userId);
         return optionalMember.orElseThrow(() ->
                 new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
     }
+   /* private void verifyExistAccountName(String AccountName) {
+        Optional<MemberEntity> member = memberRepository.findByUserId(AccountName);
+        if (member.isPresent()) {
+            throw new BusinessLogicException(ExceptionCode.MEMBER_EXISTS);
+        }
+    }*/
 
 }

@@ -1,9 +1,12 @@
 package com.dw.dwtestserver01.login;
 
+import jakarta.persistence.Lob;
+import jakarta.persistence.PostLoad;
 import jakarta.validation.constraints.NotBlank;
 
 import lombok.Data;
 import lombok.Getter;
+import org.hibernate.annotations.Loader;
 
 @Getter
 public class LoginDto {
@@ -13,5 +16,6 @@ public class LoginDto {
         private String userId;
         @NotBlank
         private String password;
+
     }
 }

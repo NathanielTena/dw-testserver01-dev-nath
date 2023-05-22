@@ -1,10 +1,8 @@
 package com.dw.dwtestserver01.login;
 
 
-import com.dw.dwtestserver01.Member.MemberDto;
 import com.dw.dwtestserver01.Member.MemberEntity;
 import com.dw.dwtestserver01.Member.MemberRepository;
-import com.dw.dwtestserver01.common.exception.ExceptionCode;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,13 +23,13 @@ public class LoginService {
     Optional<MemberEntity> optionalMember =  memberRepository.findByUserId(logindto.getUserId());
 
         if (optionalMember.isEmpty()) {
-        return "User Cannot Be Found";
+        return "Cannot be Empty";
     }
     MemberEntity foundMember = optionalMember.orElseThrow();
         if (!logindto.getPassword().equals(foundMember.getPassword())) {
-        return "Login is not Successful";
+        return "Not Succesful";
     }
-        return "Login Successful";
+        return "Successful";
 }
     /*    if (memberDto.getUserId().equals(logindto.getUserId()) &&
                 memberDto.getPassword().equals(logindto.getPassword())) {

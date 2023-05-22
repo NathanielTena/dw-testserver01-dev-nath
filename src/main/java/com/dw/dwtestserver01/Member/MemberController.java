@@ -46,9 +46,9 @@ public class MemberController {
 
     @GetMapping("/{userId}")
     public ResponseEntity getMember(@PathVariable("userId") String userId) {
-        List<MemberEntity> getMember = memberService.findByUserId(userId);
+        MemberEntity member = memberService.findVerifiedMemberByUserId(userId);
         return new ResponseEntity<>(
-                new SingleResponseDto<>(memberMapper.getMemberByUserId(getMember)),
+                new SingleResponseDto<>(memberMapper.getMemberByUserId(member)),
                 HttpStatus.OK
         );
 

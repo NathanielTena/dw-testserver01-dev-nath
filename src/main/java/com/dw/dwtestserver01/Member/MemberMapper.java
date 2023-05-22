@@ -15,6 +15,6 @@ public interface MemberMapper {
 
     List<MemberDto.Get> getAllOfMember(List<MemberEntity> getMember);
 
-    List<MemberDto.Get> getMemberByUserId(List<MemberEntity> userId);
+    MemberDto.Get getMemberByUserId(MemberEntity userId);
 
 }
